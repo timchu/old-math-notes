@@ -1,0 +1,15 @@
+:insert
+
+\\title{Default Title}
+
+\\input{opening}
+
+
+\\section{}
+
+\\section{}
+
+\\section{}
+
+
+\\end{document}
