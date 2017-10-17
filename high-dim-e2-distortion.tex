@@ -1,0 +1,19 @@
+\title{Beating Indyk's $\sqrt{\log n}$ bound might be hard}
+\input{opening}
+
+\begin{theorem} 
+Euclidean distances $\subset$ Edge-squared distances.
+\end{theorem}
+
+\begin{proof}
+If $X$ is the set of Euclidean distances on a finite set of points, then $\sqrt{X}$ is also a set of Euclidean distances (Schoenberg '37), where the square root is taken over all edge lengths.  Thus $\sqrt{X}^2 = X$ is a set of edge-squared distances. Therefore any set of Euclidean distances can be realized as a set of edge-squared distances.
+\end{proof}
+
+\begin{corollary} If there exists a configuration of points in Euclidean space such that any spanner of size $k$ has distortion $d$, there exists a configuraiton of points in Euclidean space such that any spanner of the edge-squared graph of size $k$ has distortion $d$.
+\end{corollary}
+
+Thus whatever lower bounds exist on Euclidean spanners (in arbitrary dimension), must be lower bounds on edge-squared spanners. Note that the Schoenberg embedding may require full dimensionality, so this argument will not hold for fixed dimension.
+
+Thus improvement on Indyk's bound might be hard, as improving the bound for edge-squared also improves the bound for Euclidean metrics. Thus if Indyks' bound is lower-bound tight, then we can only hope to match it.
+
+\end{document}

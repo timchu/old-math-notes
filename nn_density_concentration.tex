@@ -1,19 +1,28 @@
 \title{Default Title}
 \input{opening}
 
-\section{Nearest Neighbor Charge of path not much larger than density-based path distance}
-1. Assume uniform density. 
-2. Draw a strip with small radius around the best path in the density-based metric.
-3. Divide strip into cylindrical pieces such that with $1/2$ probability, $k=1$ points are in each pieces. The 'length' of the cylinder should be $p=2$ times its radius.
-4. Paint a cylindrical piece black if there is a data point in it. For each point in the path, charge it to:
-a) if the piece it's in is black, charge it to any point in the piece.
-b) if the piece it's in is white, charge it to any point in the nearest black piece.
-This forms an upper bound on the NN metric.
-5. Now you can show that a) is a constant off from charging it to the midpoint of that piece (something like a 4 dilation, assuming $p=2$) and b) is a constant off from charging it to the midpoint of the nearest black piece. (with a < 2 dilation or something).
-6.  Step 5 lets us charge to any point (e.g. the midpoint) of each black piece while picking up a small constant dilation. We can upper bound this charge by taking distance along the line rather than in Euclidean space.
-7. Therefore, we can bound our .... crap  no we can't. Midpoints don't quite work. I just wanted to charge this to the 1D case, but it seems like things being close in the 1D case don't quite have a similar analog in the ND case.
-8. We can, however, do the analysis where you lay down points in 1D line that's broken into regions, and 'snap' each point to the midpoint of each region.
-9. We shoud get a very good concentration bound around this, but we can't actually do the 1D thing. Unless we take the 1D thing and add a fixed constant (roughly equal to the length of each piece).
+\section{Edge-Squared Charge of path not much larger than density-based path distance}
+\begin{enumerate}
+\item Assume uniform density for now. Assume the path is continuous and smooth everywhere except a constant number of points. (Possibly a large assumption?)
+\item Draw a strip of small radius around the best path in the density-based metric. Our strategy will be to find an edge-squared path that only uses points in this strip, that is not too far off from the density-based distance.
+
+\begin{remark}
+Our strategy is to reduce our general dimension problem to a $1$-dimensional one.
+\end{remark}
+
+\item Divide the strip into cylindrical-ish pieces, with radius $r$ and length $2r$. For small $r$, each piece can be made close to cylindrical. This will divide the strip into $N$ pieces. Sample enough points so that the strip has an expected value of $N$ points in the strip. (Note: working out concentration around here might be annoying. I haven't checked it out.)
+
+\item The edge-squared path that we take will be: project each point in the strip onto the path. This induces an ordering on the points. Traverse the points in the given order.
+\item Assume the length of the line is $1$. Then the distance between two adjacent points in the ordering is upper bounded by $\sqrt{(2r)^2 + s^2}$ where $s$ is the distance between their projections \textit{along the path}. (Ish.)
+
+\item Note that the expected value of $s$ is $r$.  Note that $N$ is roughly $1/r$, or that $r$ is roughly $1/N$. (This is if we assume the path length is 1. Here is where I've gotten fuzzy, as it's pretty loud around me right now....)
+
+\item Therefore, this problem is equivalent to laying down $N$ points on the line (so expected spacing $1/N$), taking adjacent distances, squaring the result, and adding $2r^2 \cdot N = 2(1/N)^2 \cdot N = 2/N$ which is less than twice the expected value of the 1-dimensional problem (assuming equal spacing, the edge-squared cost in the 1-dimensional problem is $1/N$. Non-equal spacing onlyi increases the cost.)
+
+Therfore we have upper bounded our edge-squared distance with the edge-squared distance of the $1$-dimensional problem, times $3$. Ish. (Here, I assumed some concentration of expected number of points in the strip). I'm sure you can do better (you can probably do a 1-approximation thing, maybe with the $NN$ distance), but eh.
+
+
+\end{enumerate}
 
 
 \end{document}
